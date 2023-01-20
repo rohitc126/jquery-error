@@ -1,0 +1,14 @@
+
+                $("#<%=GridViewnew.ClientID%> Select[id$='ddlNewAc']").change(function () {  
+                    var newAcc = $(this).closest('tr').find("[id*=ddlNewAc]option:selected").val();
+                    var row = $(this).closest("tr");
+                    var message = "Row Index: "+(row[0].rowIndex - 1);
+                    $("#<%=GridViewnew.ClientID%> Select[id$='ddlNewAC']").each(function () {
+                        var oldAcc = $(this).closest('tr').find("[id*=lbllid]option:selected").text();
+                        if (oldAcc == newAcc) {
+                            alert('New Account code is same as old account code.kindly select different account code.');
+                            row.find("Select[id*='ddlNewAc']").val('0');
+                            return false;
+                        }
+                    });
+                });
